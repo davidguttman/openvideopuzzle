@@ -5,11 +5,11 @@
     <script src="/js/script.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body onload="init()">
-
+    <input type="submit" onclick="solve(); return false;" value="Solve"/>
     <div id="solved_puzzle">
         <video id="puzzle_image" autoplay="true" width="1280" height="720" onended="restartVideo()">
-          <source src="/videoplaybackhd.ogv" type="video/ogg" />
           <source src="/videoplaybackhd.mp4" />
+          <source src="/videoplaybackhd.ogv" type="video/ogg" />
         </video>
     </div>
     
@@ -50,9 +50,6 @@
         <div onclick="pieceClicked(this)" id="p12" class="piece">
           <canvas width="320" height="240" id="c12"></canvas>
         </div>
-    </div>
-    <div id="solver_button">
-      <input type="button" value="Solve!" onclick="solve()">
     </div>
   </body>
 </html>

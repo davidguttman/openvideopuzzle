@@ -29,11 +29,14 @@ function init(){
     shuffle_pieces()
     var last_piece = document.getElementById('p12')
 }
-function shuffle_pieces(){
+function shuffle_pieces(solve){
     slots = [1,2,3,4,5,6,7,8,9,10,11,12]
     for(var i=0;i<12;i++){
         a = i
         b = Math.floor(Math.random()*12)
+        if (solve) {
+          b = i;
+        }
         temp = slots[a]
         slots[a] = slots[b]
         slots[b] = temp
@@ -67,9 +70,40 @@ function pieceClicked(piece_element){
             free_slot_element.className = 'piece pos'+piece_pos;
             free_slot_pos = piece_pos;
             currently_moving = false;
+            check_solution();
           }
         )
     }
+}
+
+function check_solution() {
+  var solved = true;
+  $('.piece').each(function(index, piece) {
+    var correct_pos = $(piece).attr('id').replace('p', '');
+    var current_pos = piece.className.replace('piece pos', '');
+    var incorrect = current_pos != correct_pos;
+    if (incorrect) {
+      console.log(correct_pos + ' is incorrect');
+      solved = false;
+    } else {
+      console.log(correct_pos + ' is correct');
+    }
+  })
+  if (solved) {
+    trigger_solve_animation();
+  }
+}
+
+function trigger_solve_animation () {
+  $('#c12').animate({'opacity':1}, 500, 'swing', function() {
+    $('#solved_puzzle').css({'position': 'absolute', 'z-index': 9999});
+    $('#solved_puzzle').offset($('#play-board').offset());
+    $('#solved_puzzle').fadeIn(2000, function() {
+    });
+    $('#play-board').fadeOut(3000);      
+  });
+
+
 }
 
 function canPieceMove(piece_pos){
@@ -81,10 +115,7 @@ function canPieceMove(piece_pos){
         );
 }
 function solve(){
-    for(var i=0;i<12;i++){
-        piece_element = document.getElementById('p'+(i+1))
-        piece_element.className = 'piece pos'+(i+1)
-    }
+  shuffle_pieces(true);
 }
 
 function restartVideo(){
