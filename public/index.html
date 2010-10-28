@@ -7,8 +7,12 @@
   <body onload="init()">
 
     <div id="solved_puzzle">
-        <video id="puzzle_image" src="/videoplaybackhd.mp4" autoplay="true" width="1280" height="720" onended="restartVideo()"/>
+        <video id="puzzle_image" autoplay="true" width="1280" height="720" onended="restartVideo()">
+          <source src="/videoplaybackhd.ogv" type="video/ogg" />
+          <source src="/videoplaybackhd.mp4" />
+        </video>
     </div>
+    
     <div id="play-board">
         <div onclick="pieceClicked(this)" id="p1" class="piece">
           <canvas  width="320" height="240" id="c1"></canvas>
