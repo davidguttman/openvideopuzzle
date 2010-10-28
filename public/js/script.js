@@ -1,3 +1,8 @@
+    // $('#solved_puzzle').css({'position': 'absolute', 'z-index': 9999});
+    // $('#solved_puzzle').offset($('#play-board').offset());
+    // $('#solved_puzzle').fadeIn(2000);
+    // $('#play-board').fadeOut(3000);   
+
 inited = false;
 free_slot_pos = 12;
 free_slot_element = {};
@@ -6,7 +11,7 @@ var currently_moving = false;
 function init(){
     if (inited){
         return false;
-    } 
+    }
     pieces_can = []
     pieces_ctx = []
     for(var i=0;i<12;i++){
@@ -27,7 +32,7 @@ function init(){
         }
     },30)
     shuffle_pieces()
-    var last_piece = document.getElementById('p12')
+    var last_piece = document.getElementById('p12');
 }
 function shuffle_pieces(solve){
     slots = [1,2,3,4,5,6,7,8,9,10,11,12]
@@ -97,10 +102,9 @@ function check_solution() {
 
 function solve_animation () {
   $('#c12').animate({'opacity':1}, 500, 'swing', function() {
-    $('#solved_puzzle').css({'position': 'absolute', 'z-index': 9999});
     $('#solved_puzzle').offset($('#play-board').offset());
-    $('#solved_puzzle').fadeIn(2000);
-    $('#play-board').fadeOut(3000);      
+    $('#solved_puzzle').css('opacity', 1);
+    $('#play-board').fadeOut(3000);
   });
 
 

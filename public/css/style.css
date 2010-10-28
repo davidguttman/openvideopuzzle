@@ -31,12 +31,16 @@
         width: 1280px;
         height:720px;
         margin:5% auto;
-        position:relative;
-        background-color:#222;
-        
+        position: relative;
+        background-color:#222;        
     }
     #solved_puzzle{
-        display:none;
+      width: 1280px;
+      height:720px;
+      margin:5% auto;
+      position: absolute;
+      z-index: -20;
+      opacity: 0;
     }
     .piece.pos1 {top:0px;left:0px;z-index:12;}
     .piece.pos2 {top:0px;left:320px;z-index:11;}
