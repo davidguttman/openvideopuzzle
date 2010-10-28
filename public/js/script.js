@@ -1,6 +1,7 @@
 inited = false;
 free_slot_pos = 12;
 free_slot_element = {};
+var currently_moving = false;
 
 function init(){
     if (inited){
@@ -45,11 +46,29 @@ function shuffle_pieces(){
     }
 }
 function pieceClicked(piece_element){
+    if (currently_moving) {
+      return false;
+    };
     piece_pos = parseInt(piece_element.className.substring((piece_element.className.indexOf('pos')+3),piece_element.className.length))
     if (canPieceMove(piece_pos)){
-        piece_element.className = 'piece pos'+free_slot_pos
-        free_slot_element.className = 'piece pos'+piece_pos
-        free_slot_pos = piece_pos
+        currently_moving = true;
+        var target_top = $('#p12').css('top');
+        var target_left = $('#p12').css('left');
+        $(piece_element).css('z-index', 100);
+        $(piece_element).animate(
+          {
+            top: target_top,
+            left: target_left
+          },
+          500,
+          'swing',
+          function() {
+            piece_element.className = 'piece pos'+free_slot_pos;
+            free_slot_element.className = 'piece pos'+piece_pos;
+            free_slot_pos = piece_pos;
+            currently_moving = false;
+          }
+        )
     }
 }
 
