@@ -1,0 +1,63 @@
+    body{
+        background-color:#000;
+        color:#fff;
+    }
+    a{
+        color:#ccc !important;
+    }
+    .piece{
+        width:320px;
+        height:240px;
+        float:left;
+        border: 1px dashed rgba(255,255,255,0.10);
+        position:absolute;
+        background-color: #111;
+    }
+    .piece canvas{
+        position:absolute;
+        width:320px;
+        height:240px;
+    }
+    .piece p{
+        position: absolute;
+        z-index: 2;
+        color: #fff;
+        background-color:#000;
+        .opacity:.6;
+        padding:5px;
+        margin:5px;
+    }
+    #play-board{
+        width: 1280px;
+        height:720px;
+        margin:5% auto;
+        position:relative;
+        background-color:#222;
+        
+    }
+    #solved_puzzle{
+        display:none;
+    }
+    .piece.pos1 {top:0px;left:0px;z-index:12;}
+    .piece.pos2 {top:0px;left:320px;z-index:11;}
+    .piece.pos3 {top:0px;left:640px;z-index:10;}
+    .piece.pos4 {top:0px;left:960px;z-index:9;}
+    .piece.pos5 {top:240px;left:0px;z-index:8;}
+    .piece.pos6 {top:240px;left:320px;z-index:7;}
+    .piece.pos7 {top:240px;left:640px;z-index:6;}
+    .piece.pos8 {top:240px;left:960px;z-index:5;}
+    .piece.pos9 {top:480px;left:0px;z-index:4;}
+    .piece.pos10 {top:480px;left:320px;z-index:3;}
+    .piece.pos11 {top:480px;left:640px;z-index:2;}
+    .piece.pos12 {top:480px;left:960px;z-index:1;}
+    #c12 {opacity:0;}
+    
+    #solver_button {
+      text-align: center;
+      margin: 20px;
+    }
+    input[type="submit"] {
+      border: 1px solid #222;
+      background-color: #111;
+      color: #fff;
+    }
